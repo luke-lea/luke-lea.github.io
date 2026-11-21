@@ -10,8 +10,22 @@
 <script>
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.3.1","compatnewest":"","compatold":""}};
 </script>
-<style>img.wp-smiley,
-img.emoji {
+<style>
+:root {
+	--ink: #172033;
+	--muted: #5d6678;
+	--line: #dde1e8;
+	--accent: #6b7280;
+}
+html { scroll-behavior: smooth; }
+body {
+	margin: 0;
+	color: var(--ink);
+	background: #ffffff;
+	font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+img.wp-smiley, img.emoji {
 	display: inline !important;
 	border: none !important;
 	box-shadow: none !important;
@@ -23,11 +37,26 @@ img.emoji {
 	padding: 0 !important;
 }
 
-/* Keep the landing-page title centered and give the navigation links room. */
-main > h1.has-text-align-center {
+/* Header */
+.wp-block-template-part:first-child .wp-block-group.has-global-padding {
+	max-width: 1180px;
+	margin: 0 auto;
+	padding: 24px 28px 12px;
+}
+header .wp-block-group.alignwide {
 	width: 100%;
-	margin-inline: auto;
-	text-align: center;
+	padding: 0 0 20px;
+	border-bottom: 1px solid var(--line);
+}
+.wp-block-site-title {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+}
+.wp-block-site-title a {
+	color: var(--ink);
+	text-decoration: none;
 }
 .wp-block-navigation__responsive-container {
 	position: static;
@@ -37,38 +66,119 @@ main > h1.has-text-align-center {
 	display: flex !important;
 	align-items: center;
 	justify-content: flex-end;
-	flex-wrap: wrap;
-	gap: clamp(1rem, 2.5vw, 2.5rem);
-	list-style: none;
+	gap: clamp(20px, 3vw, 36px);
 	margin: 0;
 	padding: 0;
+	list-style: none;
+}
+.wp-block-navigation-item__content {
+	position: relative;
+	color: var(--ink);
+	font-size: 15px;
+	font-weight: 600;
+	text-decoration: none;
+}
+.wp-block-navigation-item__content::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 100%;
+	bottom: -5px;
+	height: 1px;
+	background: var(--ink);
+	transition: right 180ms ease;
+}
+.wp-block-navigation-item__content:hover::after,
+.wp-block-navigation-item__content:focus::after {
+	right: 0;
 }
 .wp-block-navigation__responsive-container-open {
 	display: none !important;
 }
+
+/* Landing page */
+main.wp-block-group {
+	max-width: 860px;
+	margin: 0 auto;
+	padding: 44px 28px 72px;
+}
+main > h1.has-text-align-center {
+	width: 100%;
+	margin: 0 auto 22px;
+	text-align: center;
+	font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	font-size: clamp(38px, 5vw, 52px);
+	line-height: 1.05;
+	font-weight: 700;
+	letter-spacing: -0.035em;
+}
+main > .wp-block-image {
+	margin: 0 auto 36px;
+}
+main > .wp-block-image img {
+	width: 340px !important;
+	height: auto !important;
+	border-radius: 3px;
+	box-shadow: 0 14px 36px rgba(23, 32, 51, 0.12);
+}
+main .wp-block-columns {
+	max-width: 720px;
+	margin: 0 auto;
+}
+main .wp-block-column p {
+	max-width: 720px;
+	margin: 0;
+	color: var(--muted);
+	font-size: 18px;
+	line-height: 1.72;
+}
+
+/* Avoid an empty paragraph affecting the biography layout. */
+main .wp-block-column p:empty { display: none; }
+
 @media (max-width: 600px) {
-	.wp-block-navigation__container {
-		gap: 0.75rem 1rem;
+	.wp-block-template-part:first-child .wp-block-group.has-global-padding {
+		padding: 18px 18px 8px;
 	}
-}</style>
+	header .wp-block-group.alignwide {
+		gap: 12px;
+		padding-bottom: 14px;
+	}
+	.wp-block-site-title { font-size: 16px; }
+	.wp-block-navigation__container { gap: 14px; }
+	.wp-block-navigation-item__content { font-size: 14px; }
+	main.wp-block-group {
+		padding: 34px 20px 56px;
+	}
+	main > h1.has-text-align-center {
+		margin-bottom: 18px;
+		font-size: 36px;
+	}
+	main > .wp-block-image { margin-bottom: 28px; }
+	main > .wp-block-image img {
+		width: min(300px, 82vw) !important;
+		box-shadow: 0 10px 24px rgba(23, 32, 51, 0.11);
+	}
+	main .wp-block-column p {
+		font-size: 16px;
+		line-height: 1.65;
+	}
+}
+</style>
 	<style id="wp-block-site-title-inline-css">.wp-block-site-title a{color:inherit}
-.wp-block-site-title{font-size: var(--wp--preset--font-size--medium);font-weight: normal;line-height: 1.4;}
-.wp-block-site-title a:where(:not(.wp-element-button)){text-decoration: none;}
-.wp-block-site-title a:where(:not(.wp-element-button)):hover{text-decoration: underline;}
-.wp-block-site-title a:where(:not(.wp-element-button)):focus{text-decoration: underline dashed;}
-.wp-block-site-title a:where(:not(.wp-element-button)):active{color: var(--wp--preset--color--secondary);text-decoration: none;}</style>
-<style id="wp-block-navigation-link-inline-css">.wp-block-navigation .wp-block-navigation-item__label{overflow-wrap:break-word;word-break:normal}.wp-block-navigation .wp-block-navigation-item__description{display:none}.wp-block-navigation .wp-block-navigation-item__url{}</style>
+.wp-block-site-title{font-weight: normal;line-height: 1.4;}
+.wp-block-site-title a:where(:not(.wp-element-button)){text-decoration: none;}</style>
+<style id="wp-block-navigation-link-inline-css">.wp-block-navigation .wp-block-navigation-item__label{overflow-wrap:break-word;word-break:normal}.wp-block-navigation .wp-block-navigation-item__description{display:none}</style>
 <link rel="stylesheet" id="wp-block-navigation-css" href="/wp-includes/blocks/navigation/style.min.css?ver=6.3.1" media="all">
 <style id="wp-block-navigation-inline-css">.wp-block-navigation{font-size: var(--wp--preset--font-size--small);}
-.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;text-decoration: none;}
-.wp-block-navigation a:where(:not(.wp-element-button)):hover{text-decoration: underline;}
-.wp-block-navigation a:where(:not(.wp-element-button)):active{text-decoration: none;}</style>
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;text-decoration: none;}</style>
 <style id="wp-block-group-inline-css">.wp-block-group{box-sizing:border-box}</style>
 <style id="wp-block-heading-inline-css">h1.has-background,h2.has-background,h3.has-background,h4.has-background,h5.has-background,h6.has-background{padding:1.25em 2.375em}</style>
 <style id="wp-block-image-inline-css">.wp-block-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom}.wp-block-image.aligncenter{text-align:center}</style>
 <style id="wp-block-columns-inline-css">.wp-block-columns{align-items:normal!important;box-sizing:border-box;display:flex;flex-wrap:wrap!important}@media (min-width:782px){.wp-block-columns{flex-wrap:nowrap!important}}</style>
-<style id="global-styles-inline-css">:root{--wp--preset--color--black:#000;--wp--preset--color--white:#fff;--wp--preset--font-size--small:13px;--wp--preset--font-size--medium:20px;--wp--preset--spacing--20:.44rem;--wp--preset--spacing--30:.67rem;--wp--preset--spacing--40:1rem;--wp--preset--spacing--50:1.5rem;--wp--preset--spacing--60:2.25rem;--wp--preset--spacing--70:3.38rem;--wp--preset--spacing--80:5.06rem}body{margin:0;color:#000;background:#fff;font-family:Arial,sans-serif}.has-global-padding{padding-right:var(--wp--style--root--padding-right,2rem);padding-left:var(--wp--style--root--padding-left,2rem)}.is-layout-constrained>*{max-width:var(--wp--style--global--content-size,1200px);margin-left:auto;margin-right:auto}.alignwide{max-width:var(--wp--style--global--wide-size,1600px)}.is-layout-flex{display:flex;gap:2rem}.is-content-justification-space-between{justify-content:space-between}.has-text-align-center{text-align:center}</style>
-<style id="wp-webfonts-inline-css">@font-face{font-family:"DM Sans";font-style:normal;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentythree/assets/fonts/dm-sans/DMSans-Regular.woff2') format('woff2');}</style>
+<style id="wp-block-library-inline-css">:root{--wp-admin-theme-color:#007cba}</style>
+<style id="wp-webfonts-inline-css">@font-face{font-family:"DM Sans";font-style:normal;font-weight:400;font-display:fallback;src:url('/wp-content/themes/twentytwentythree/assets/fonts/dm-sans/DMSans-Regular.woff2') format('woff2');}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:700;font-display:fallback;src:url('/wp-content/themes/twentytwentythree/assets/fonts/dm-sans/DMSans-Bold.woff2') format('woff2');}</style>
 <script src="/wp-includes/blocks/navigation/view.min.js?ver=886680af40b7521d60fc" id="wp-block-navigation-view-js"></script>
 <link rel="https://api.w.org/" href="/wp-json/">
 <meta name="generator" content="WordPress 6.3.1">
@@ -77,22 +187,27 @@ main > h1.has-text-align-center {
 <div class="wp-site-blocks">
 <header class="wp-block-template-part">
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-	<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-3 wp-block-group-is-layout-flex" style="padding-bottom:var(--wp--preset--spacing--40)">
+	<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-3 wp-block-group-is-layout-flex">
 		<p class="wp-block-site-title"><a href="/" target="_self" rel="home" aria-current="page">Luke Lea</a></p>
-		<nav class="is-responsive items-justified-right is-fallback wp-block-navigation is-content-justification-right is-layout-flex wp-container-2 wp-block-navigation-is-layout-flex" aria-label=""><button aria-label="Open menu" class="wp-block-navigation__responsive-container-open"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M3 5v2h18V5H3zm0 14h18v-2H3v2zm0-6h18v-2H3v2z"/></svg></button>
-			<div class="wp-block-navigation__responsive-container  " id="modal-1">
-				<ul class="wp-block-navigation__container"><li class="wp-block-navigation-item"><a class="wp-block-navigation-item__content" href="/cv/"><span class="wp-block-navigation-item__label">CV</span></a></li><li class="wp-block-navigation-item"><a class="wp-block-navigation-item__content" href="/research/"><span class="wp-block-navigation-item__label">Research</span></a></li><li class="wp-block-navigation-item"><a class="wp-block-navigation-item__content" href="/teaching/"><span class="wp-block-navigation-item__label">Teaching</span></a></li></ul>
-			</div></nav>
+		<nav class="is-responsive items-justified-right is-fallback wp-block-navigation is-content-justification-right is-layout-flex wp-container-2 wp-block-navigation-is-layout-flex" aria-label="">
+			<button aria-label="Open menu" class="wp-block-navigation__responsive-container-open"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M3 5v2h18V5H3zm0 14h18v-2H3v2zm0-6h18v-2H3v2z"/></svg></button>
+			<div class="wp-block-navigation__responsive-container" id="modal-1">
+				<ul class="wp-block-navigation__container">
+					<li class="wp-block-navigation-item"><a class="wp-block-navigation-item__content" href="/cv/"><span class="wp-block-navigation-item__label">CV</span></a></li>
+					<li class="wp-block-navigation-item"><a class="wp-block-navigation-item__content" href="/research/"><span class="wp-block-navigation-item__label">Research</span></a></li>
+					<li class="wp-block-navigation-item"><a class="wp-block-navigation-item__content" href="/teaching/"><span class="wp-block-navigation-item__label">Teaching</span></a></li>
+				</ul>
+			</div>
+		</nav>
 	</div>
 </div>
 </header>
-<main class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--50);margin-bottom:var(--wp--preset--spacing--50)">
-<h1 class="wp-block-heading has-text-align-center" style="margin-bottom:var(--wp--preset--spacing--40)">LUKE LEA</h1>
-<figure class="wp-block-image aligncenter size-large is-resized"><img decoding="async" src="/wp-content/uploads/2023/09/IMG_5781-scaled-e1694734917287-776x1024.jpg" alt="" class="wp-image-34" style="width:368px;height:444px" width="368" height="444" sizes="(max-width:368px)100vw,368px"></figure>
+<main class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h1 class="wp-block-heading has-text-align-center">LUKE LEA</h1>
+<figure class="wp-block-image aligncenter size-large is-resized"><img decoding="async" src="/wp-content/uploads/2023/09/IMG_5781-scaled-e1694734917287-776x1024.jpg" alt="Luke Lea seated by a wooden wall" class="wp-image-34" style="width:340px;height:447px" width="340" height="447" sizes="(max-width:340px)100vw,340px"></figure>
 <div class="wp-block-columns alignwide is-layout-flex wp-container-6 wp-block-columns-is-layout-flex">
 <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
-<p>I am a Ph.D. candidate in Classical Studies at Columbia University, specializing in Ancient Greek and Roman Philosophy. I earned a B.A. from St. John&#8217;s College in Santa Fe, New Mexico and</p>
-<p></p>
+<p>I am a Ph.D. candidate in Classical Studies at Columbia University, specializing in Ancient Greek and Roman Philosophy. I earned a B.A. from St. John&#8217;s College in Santa Fe, New Mexico.</p>
 </div>
 </div>
 </main>
